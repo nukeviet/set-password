@@ -7,12 +7,13 @@ require str_replace( DIRECTORY_SEPARATOR, '/', dirname( __file__ ) ) . '/mainfil
 $username = 'vuthao'; // Tên tài khoản cần reset mật khẩu
 $newpassword = 'xxyyzz'; // Mật khẩu mới
 
-$client_ip = '113.190.237.5';// IP của máy tính reset mật khẩu
+$client_ip = '113.190.237.5';// IP của máy tính reset mật khẩu, có thể lấy thông số này qua trang http://checkip.dyndns.org hoặc checkip.org
 $sitekey = 'sitekey-sitekey-sitekey-sitekey'; //sitekey của site, lấy từ file config.php
 
 if( NV_CLIENT_IP == $client_ip and $global_config['sitekey'] == $sitekey )
 {
-	$password = $crypt->hash( trim( $newpassword ) );
+	$newpassword = trim( $newpassword );
+	$password = ( isset( $global_config['hashprefix'] ) ) ? $crypt->hash_password( $newpassword, $global_config['hashprefix'] ) : $crypt->hash( $newpassword );
 	if( $db->exec( "UPDATE " . NV_USERS_GLOBALTABLE . " SET password=" . $db->quote( $password ) . " WHERE md5username='" . nv_md5safe( trim( $username ) ) . "'" ) )
 	{
 		nv_insert_logs( NV_LANG_DATA, 'users', 'Tool Reset Password: ' . $username, 'Client IP: ' . $client_ip, 0 );
