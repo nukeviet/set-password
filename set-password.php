@@ -2,6 +2,9 @@
 
 define( 'NV_SYSTEM', true );
 
+// Xac dinh thu muc goc cua site
+define( 'NV_ROOTDIR', pathinfo( str_replace( DIRECTORY_SEPARATOR, '/', __file__ ), PATHINFO_DIRNAME ) );
+
 require NV_ROOTDIR . '/includes/mainfile.php';
 
 $username = 'vuthao'; // Tên tài khoản cần reset mật khẩu
