@@ -3,7 +3,7 @@
 Để sư dụng cách này bạn cần làm theo các bước sau.
 
 - Tải về công cụ tại địa chỉ web: https://github.com/nukeviet/set-password/archive/master.zip
-- Giải nén, upload file có được lên host (ngang hàng với các file index.php, mainfile.php,…)
+- Giải nén, upload file có được lên host (ngang hàng với các file index.php ỏ thư mục gốc của website)
 - Sửa nội dung file set-password.php cho phù hợp.
 ```
 $username = 'vuthao'; // thay vuthao thành tài khoản tối cao mà bạn cần thay mật khẩu.
